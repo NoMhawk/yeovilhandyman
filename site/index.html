@@ -8,12 +8,6 @@
   <meta name="keywords" content="handyman Yeovil, Yeovil handyman services, home repairs Yeovil, plumbing Yeovil, carpentry Yeovil, Somerset handyman, affordable handyman Yeovil">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Yeovil Handyman">
-  <!-- Open Graph Tags for Social Media -->
-  <meta property="og:title" content="Yeovil Handyman - Expert Home Services in Yeovil, Somerset">
-  <meta property="og:description" content="Trusted handyman services in Yeovil. From repairs to installations, we deliver quality solutions. Get a free quote today!">
-  <meta property="og:image" content="https://yourwebsite.com/img/yeovil-handyman-logo.jpg">
-  <meta property="og:url" content="https://yourwebsite.com">
-  <meta property="og:type" content="website">
   <title>Handyman Yeovil | Yeovil Handyman Services - Home Repairs & Maintenance</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -29,10 +23,10 @@
           </a>
         </div>
         <div class="nav-list">
-          <div class="hamburger">
-            <div class="bar"></div>
-          </div>
-          <ul>
+          <button type="button" class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+            <span class="bar"></span>
+          </button>
+          <ul id="nav-menu">
             <li><a href="#hero" data-after="Home">Home</a></li>
             <li><a href="#services" data-after="Service">Services</a></li>
             <li><a href="#projects" data-after="Projects">Projects</a></li>
@@ -190,13 +184,6 @@
           </div>
         </div>
         <div class="contact-item">
-          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/map-marker.png" alt="Address Icon" /></div>
-          <div class="contact-info">
-            <h1>Address</h1>
-            <h2>49 Sparrow Road, Yeovil, Somerset, BA21 4BX</h2>
-          </div>
-        </div>
-        <div class="contact-item">
           <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/whatsapp.png" alt="WhatsApp Icon" /></div>
           <div class="contact-info">
             <h1>WhatsApp</h1>
@@ -215,6 +202,6 @@
     </div>
   </section>
   <!-- End Footer -->
-  <script src="./app.js"></script>
+  <script src="./app.js" defer></script>
 </body>
 </html>

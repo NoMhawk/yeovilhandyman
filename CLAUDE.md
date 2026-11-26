@@ -41,11 +41,13 @@ Email is still **Fasthosts mail** (livemail). The setup:
 
 All of these are DNS only in Cloudflare. Don't change them. Don't turn on Cloudflare Email Routing: it would replace the MX records and cut off the Fasthosts mailboxes.
 
-## Known issues in the site (found 26 Nov 2026, not yet fixed)
-- `index.html` loads `./app.js`, which doesn't exist (404). The mobile menu (hamburger) probably doesn't work.
-- Missing images, all 404: `img/lighting.jpg` (Lighting Installation project), `img/hero-bg.png` and `img/img-1.png` (used in `style.css`).
-- The Open Graph tags still use placeholders: `og:url` and `og:image` point at `https://yourwebsite.com`.
+## Site notes
+- `site/app.js` runs the mobile menu (open, close on link tap or Escape) and darkens the header after scrolling. The menu button is a real `<button>` with aria-expanded.
+- The project pictures in `site/img/` are AI-generated (they carry a "Grok" watermark), not photos of real jobs. `lighting.jpg` is a crop of `kitchen.jpg`. The hero background is `painting.jpg` under a dark overlay. Rich to update: swap in real job photos when available.
+- No home address on the site (removed 26 Nov 2026 at Rich's request). Contact is phone, email and WhatsApp.
+- No social-media (Open Graph) tags, by choice.
+
+## Known issues still open
 - There's no canonical link tag.
 - There's no favicon.
 - The icons and the Montserrat font load from third parties: img.icons8.com and Google Fonts.
-- The page shows a home address (49 Sparrow Road) and a mobile number. Rich, check this is what you want public.

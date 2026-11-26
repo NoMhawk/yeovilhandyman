@@ -146,6 +146,9 @@ p {
 	color: crimson;
 }
 #header .hamburger {
+	background: none;
+	padding: 0;
+	font: inherit;
 	height: 60px;
 	width: 60px;
 	display: inline-block;
@@ -170,6 +173,7 @@ p {
 	animation: hamburger_puls 1s ease infinite;
 }
 #header .hamburger .bar {
+	display: block;
 	height: 2px;
 	width: 30px;
 	position: relative;
@@ -203,7 +207,7 @@ p {
 
 /* Hero Section */
 #hero {
-	background-image: url(./img/hero-bg.png);
+	background-image: url(./img/painting.jpg);
 	background-size: cover;
 	background-position: top center;
 	position: relative;
@@ -294,8 +298,6 @@ p {
 	flex-direction: column;
 	padding: 30px;
 	border-radius: 10px;
-	background-image: url(./img/img-1.png);
-	background-size: cover;
 	margin: 10px 5%;
 	position: relative;
 	z-index: 1;
