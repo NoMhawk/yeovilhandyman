@@ -1,4 +1,11 @@
-@import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
+/* Montserrat (SIL Open Font Licence), self-hosted: one variable file covers weights 300-700. */
+@font-face {
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url(./fonts/montserrat-latin.woff2) format('woff2');
+}
 * {
 	padding: 0;
 	margin: 0;
@@ -706,3 +713,83 @@ p {
 	}
 }
 /* End  Media Query For Desktop */
+/* Contact form (added 26 Nov 2026). Posts to Web3Forms; no script needed. */
+#contact .contact-intro {
+	text-align: center;
+	font-size: 1.6rem;
+	margin: 20px auto 30px;
+	max-width: 600px;
+}
+.contact-form {
+	width: 100%;
+	max-width: 760px;
+	margin: 0 auto;
+	padding: 30px;
+	border-radius: 10px;
+	box-shadow: 0 0 18px 0 #0000002c;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 18px 24px;
+}
+@media only screen and (min-width: 768px) {
+	.contact-form { grid-template-columns: 1fr 1fr; }
+	.contact-form .form-row-wide { grid-column: 1 / -1; }
+}
+.contact-form .form-row { display: flex; flex-direction: column; }
+.contact-form label {
+	font-size: 1.4rem;
+	font-weight: 500;
+	margin-bottom: 6px;
+	color: #29323c;
+}
+.contact-form .optional { font-weight: 300; color: #555; }
+.contact-form input,
+.contact-form textarea {
+	font: inherit;
+	font-size: 1.6rem;
+	padding: 10px 12px;
+	border: 1px solid #b8bec6;
+	border-radius: 6px;
+	background: #fff;
+	color: #111;
+	width: 100%;
+}
+.contact-form textarea { resize: vertical; min-height: 140px; }
+.contact-form input:focus,
+.contact-form textarea:focus {
+	outline: 2px solid crimson;
+	outline-offset: 1px;
+	border-color: crimson;
+}
+.contact-form .hidden-field { display: none; }
+.contact-form .form-note { font-size: 1.3rem; margin: 0; }
+.contact-form .form-note a,
+#contact .contact-email a { color: crimson; }
+.contact-form button.cta {
+	cursor: pointer;
+	margin-top: 0;
+	justify-self: start;
+	color: #29323c;
+	font-family: inherit;
+	font-weight: 500;
+}
+.contact-form button.cta:hover { color: #fff; }
+#contact .contact-email {
+	text-align: center;
+	font-size: 1.6rem;
+	margin: 30px 0 0;
+}
+#footer p { color: #fff; }
+#footer p a { color: #fff; text-decoration: underline; }
+
+/* Simple text pages: privacy notice, thank-you */
+.text-page {
+	max-width: 760px;
+	margin: 0 auto;
+	padding: 140px 24px 80px;
+}
+.text-page h1 { font-size: 3.6rem; font-weight: 500; margin-bottom: 20px; }
+.text-page h2 { font-size: 2.2rem; font-weight: 500; margin: 30px 0 8px; }
+.text-page p, .text-page li { font-size: 1.6rem; line-height: 2.6rem; }
+.text-page ul { padding-left: 24px; margin-top: 8px; }
+.text-page a { color: crimson; }

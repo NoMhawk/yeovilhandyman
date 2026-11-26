@@ -25,8 +25,10 @@
   });
 
   // Make the header solid once the page has scrolled, so it stays readable.
+  // Pages without the dark hero picture (privacy, thank-you) keep it solid all the time.
+  var alwaysSolid = !document.getElementById('hero');
   function onScroll() {
-    if (header) header.style.backgroundColor = window.scrollY > 250 ? '#29323c' : '';
+    if (header) header.style.backgroundColor = (alwaysSolid || window.scrollY > 250) ? '#29323c' : '';
   }
   document.addEventListener('scroll', onScroll, { passive: true });
   onScroll();

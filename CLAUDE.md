@@ -42,12 +42,18 @@ Email is still **Fasthosts mail** (livemail). The setup:
 All of these are DNS only in Cloudflare. Don't change them. Don't turn on Cloudflare Email Routing: it would replace the MX records and cut off the Fasthosts mailboxes.
 
 ## Site notes
-- `site/app.js` runs the mobile menu (open, close on link tap or Escape) and darkens the header after scrolling. The menu button is a real `<button>` with aria-expanded.
+- Pages: `/` (one-page site), `/privacy/` (privacy notice), `/thank-you/` (after the form, noindex), `404.html`.
+- `site/app.js` runs the mobile menu (open, close on link tap or Escape) and darkens the header after scrolling. On pages without the dark hero picture, the header is always solid.
+- **Contact form:** posts straight to Web3Forms (no script).
+  - Account `yeovilhandyman@richietaylor.net` (Free plan, 250 a month). Form "Yeovil Handyman contact form", access key in `index.html` (public, not a secret).
+  - Each enquiry is emailed to the account address, then on to Rich's Gmail. After sending, visitors go to `/thank-you/`.
+  - A hidden `botcheck` box catches spam bots.
+  - The privacy notice names Web3Forms. Change it if the form processor changes.
+- **No third-party loads.**
+  - Montserrat is self-hosted in `site/fonts/` (one variable woff2, SIL Open Font Licence).
+  - Service icons are inline SVGs.
+  - The only outside requests are Cloudflare's analytics beacon and the form post.
+- `favicon.svg`: "YH" in crimson on dark grey. Every page has a canonical link.
 - The project pictures in `site/img/` are AI-generated (they carry a "Grok" watermark), not photos of real jobs. `lighting.jpg` is a crop of `kitchen.jpg`. The hero background is `painting.jpg` under a dark overlay. Rich to update: swap in real job photos when available.
-- No home address on the site (removed 26 Nov 2026 at Rich's request). Contact is phone, email and WhatsApp.
+- No home address, phone number or WhatsApp on the site, at Rich's request (26 Nov 2026). Contact is the form plus web@yeovilhandyman.com.
 - No social-media (Open Graph) tags, by choice.
-
-## Known issues still open
-- There's no canonical link tag.
-- There's no favicon.
-- The icons and the Montserrat font load from third parties: img.icons8.com and Google Fonts.

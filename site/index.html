@@ -9,6 +9,9 @@
   <meta name="robots" content="index, follow">
   <meta name="author" content="Yeovil Handyman">
   <title>Handyman Yeovil | Yeovil Handyman Services - Home Repairs & Maintenance</title>
+  <link rel="canonical" href="https://yeovilhandyman.com/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -64,22 +67,22 @@
       </div>
       <div class="service-bottom">
         <div class="service-item">
-          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/services.png" alt="Plumbing Repairs Icon" /></div>
+          <div class="icon"><svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s-6 6.5-6 11a6 6 0 0 0 12 0c0-4.5-6-11-6-11z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/></svg></div>
           <h2>Plumbing Repairs</h2>
           <p>Fixing leaks, unclogging drains, and installing fixtures in Yeovil homes.</p>
         </div>
         <div class="service-item">
-          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/services.png" alt="Carpentry Icon" /></div>
+          <div class="icon"><svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l9-9 4 4-9 9H3z"/><path d="M14 6l2-2 4 4-2 2"/><path d="M6 17l1 1M8 15l1 1M10 13l1 1"/></svg></div>
           <h2>Carpentry</h2>
           <p>Custom shelving, furniture repairs, and woodwork tailored to your Yeovil property.</p>
         </div>
         <div class="service-item">
-          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/services.png" alt="Painting Icon" /></div>
+          <div class="icon"><svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="15" height="6" rx="1.5"/><path d="M18 6h2v5h-8v3"/><rect x="10.5" y="14" width="3" height="7" rx="1"/></svg></div>
           <h2>Painting & Decorating</h2>
           <p>Interior and exterior painting services for a fresh look in Yeovil.</p>
         </div>
         <div class="service-item">
-          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/services.png" alt="Minor Electrical Icon" /></div>
+          <div class="icon"><svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/><path d="M12.5 7l-2 3h3l-2 3"/></svg></div>
           <h2>Minor Electrical Work</h2>
           <p>Safe and reliable fixes for lighting, outlets, and more in Yeovil properties.</p>
         </div>
@@ -168,29 +171,37 @@
       <div>
         <h1 class="section-title">Contact <span>Yeovil Handyman</span></h1>
       </div>
-      <div class="contact-items">
-        <div class="contact-item">
-          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/phone.png" alt="Phone Icon" /></div>
-          <div class="contact-info">
-            <h1>Phone</h1>
-            <h2><a href="tel:07817976703">07817 976703</a></h2>
-          </div>
+      <p class="contact-intro">Tell us what needs doing and we'll get back to you with a free quote.</p>
+      <form class="contact-form" action="https://api.web3forms.com/submit" method="post">
+        <input type="hidden" name="access_key" value="97cf17ff-3743-4381-8904-7abdcceeb277">
+        <input type="hidden" name="subject" value="New enquiry from yeovilhandyman.com">
+        <input type="hidden" name="from_name" value="Yeovil Handyman website">
+        <input type="hidden" name="redirect" value="https://yeovilhandyman.com/thank-you/">
+        <input type="checkbox" name="botcheck" class="hidden-field" tabindex="-1" autocomplete="off">
+        <div class="form-row">
+          <label for="f-name">Your name</label>
+          <input id="f-name" type="text" name="name" required autocomplete="name">
         </div>
-        <div class="contact-item">
-          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/new-post.png" alt="Email Icon" /></div>
-          <div class="contact-info">
-            <h1>Email</h1>
-            <h2><a href="mailto:web@yeovilhandyman.com">web@yeovilhandyman.com</a></h2>
-          </div>
+        <div class="form-row">
+          <label for="f-email">Email address</label>
+          <input id="f-email" type="email" name="email" required autocomplete="email">
         </div>
-        <div class="contact-item">
-          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/whatsapp.png" alt="WhatsApp Icon" /></div>
-          <div class="contact-info">
-            <h1>WhatsApp</h1>
-            <h2><a href="https://wa.me/447817976703" target="_blank">Chat with us on WhatsApp</a></h2>
-          </div>
+        <div class="form-row">
+          <label for="f-phone">Phone number <span class="optional">(optional)</span></label>
+          <input id="f-phone" type="tel" name="phone" autocomplete="tel">
         </div>
-      </div>
+        <div class="form-row">
+          <label for="f-postcode">Postcode or area <span class="optional">(optional)</span></label>
+          <input id="f-postcode" type="text" name="area" autocomplete="postal-code">
+        </div>
+        <div class="form-row form-row-wide">
+          <label for="f-message">What do you need doing?</label>
+          <textarea id="f-message" name="message" rows="6" required></textarea>
+        </div>
+        <p class="form-note form-row-wide">We only use your details to reply to your enquiry. See our <a href="/privacy/">privacy notice</a>.</p>
+        <button type="submit" class="cta form-row-wide">Send enquiry</button>
+      </form>
+      <p class="contact-email">Or email us at <a href="mailto:web@yeovilhandyman.com">web@yeovilhandyman.com</a></p>
     </div>
   </section>
   <!-- End Contact Section -->
@@ -198,7 +209,7 @@
   <!-- Footer -->
   <section id="footer">
     <div class="footer container">
-      <p>Copyright © 2025 RT Web Design. All rights reserved</p>
+      <p>Copyright © 2025 RT Web Design. All rights reserved · <a href="/privacy/">Privacy notice</a></p>
     </div>
   </section>
   <!-- End Footer -->
