@@ -7,6 +7,7 @@ The site is plain static HTML and CSS, made before this repo was reorganised. Th
 ## Folder layout
 - `site/`: everything the browser gets. `index.html`, `style.css`, `img/`, plus:
   - `_headers`: Cloudflare security headers
+  - `404.html`: the not-found page (noindex). Without it, Cloudflare Pages would serve the home page for every unknown URL.
   - `sitemap.xml` and `robots.txt`: written by `python -I "D:\storage\Claude\Move Domains\tools\make_sitemap.py" site https://yeovilhandyman.com`. Re-run it after adding a page.
 - `.claude/launch.json`: "site" preview. Or run `python -m http.server 8080 --directory site`.
 
@@ -29,7 +30,7 @@ The site is plain static HTML and CSS, made before this repo was reorganised. Th
 
 ## Analytics
 - Cloudflare Web Analytics, automatic setup. There's no script in the code and no cookies. The beacon is added by Cloudflare at the edge.
-- Google Search Console: domain property `yeovilhandyman.com`, verified by a `google-site-verification` TXT record in Cloudflare DNS. **Do not delete it.** Sitemap `https://yeovilhandyman.com/sitemap.xml` submitted.
+- Google Search Console: domain property `yeovilhandyman.com` (already set up in 2025), verified by a `google-site-verification` TXT record in Cloudflare DNS. **Do not delete it.** Sitemap `https://yeovilhandyman.com/sitemap.xml` resubmitted on 26 Nov 2026.
 
 ## Email (not part of this site)
 Email is still **Fasthosts mail** (livemail). The setup:
