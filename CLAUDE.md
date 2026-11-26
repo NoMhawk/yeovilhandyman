@@ -27,6 +27,7 @@ The site is plain static HTML and CSS, made before this repo was reorganised. Th
   - apex A records 185.199.108.153, .109, .110, .111
   - `www` CNAME `nomhawk.github.io`
   - To undo, put those back as DNS only, restore the `CNAME` file and the root layout, and turn GitHub Pages back on.
+- The old Fasthosts zone (not live, kept as a fallback) was also changed on 26 Nov 2026. Its apex A records now point to 104.21.72.175 and 172.67.153.84, and its `www` CNAME to `yeovilhandyman.pages.dev`. This is because some resolvers kept asking Fasthosts for up to 48 hours after the nameserver move. Its email records are unchanged.
 
 ## Analytics
 - Cloudflare Web Analytics, automatic setup. There's no script in the code and no cookies. The beacon is added by Cloudflare at the edge.
