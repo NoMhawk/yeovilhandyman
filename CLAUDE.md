@@ -53,7 +53,10 @@ All of these are DNS only in Cloudflare. Don't change them. Don't turn on Cloudf
   - Montserrat is self-hosted in `site/fonts/` (one variable woff2, SIL Open Font Licence).
   - Service icons are inline SVGs.
   - The only outside requests are Cloudflare's analytics beacon and the form post.
-- `favicon.svg`: "YH" in crimson on dark grey. Every page has a canonical link.
+- `favicon.svg`: "YH" in crimson on dark grey (the source for all the icons). Every page has a canonical link.
 - The project pictures in `site/img/` are AI-generated (they carry a "Grok" watermark), not photos of real jobs. `lighting.jpg` is a crop of `kitchen.jpg`. The hero background is `painting.jpg` under a dark overlay. Rich to update: swap in real job photos when available.
 - No home address, phone number or WhatsApp on the site, at Rich's request (26 Nov 2026). Contact is the form plus web@yeovilhandyman.com.
-- No social-media (Open Graph) tags, by choice.
+- Search results and link previews (26 Nov 2026, Rich chose a branded card):
+  - `favicon.ico`, `apple-touch-icon.png`, `icon-192/512.png`, `logo-512.png` and `og-image.png` (dark card: YH, "Yeovil Handyman", "Home repairs and maintenance in Yeovil") are made from `favicon.svg` by `python "D:\storage\Claude\Move Domains	ools\make_icons.py" --svg site/favicon.svg --out site --bg "#1f262e" --accent "#ff4d6a" --card-title "Yeovil Handyman" --card-sub "Home repairs and maintenance in Yeovil"`.
+  - The tags in each page's `<!-- search-appearance -->` block (icons, manifest, og:/twitter:, and WebSite + business schema on the home page) are written by `search_tags.py` in the same folder. Rerun it after adding a page or changing a title or description (in Git Bash, prefix `MSYS_NO_PATHCONV=1`).
+  - Check it live: `node "D:\storage\Claude\Check Sites\scripts\search-appearance.mjs" yeovilhandyman.com`.
