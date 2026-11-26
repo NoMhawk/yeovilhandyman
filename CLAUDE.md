@@ -23,7 +23,7 @@ The site is plain static HTML and CSS, made before this repo was reorganised. Th
 - Custom domains on the Pages project: `yeovilhandyman.com` and `www.yeovilhandyman.com`. Cloudflare made the proxied DNS records for them.
 - Redirect rule "www to bare domain": `https://www.yeovilhandyman.com/*` → `https://yeovilhandyman.com/${1}`. It is a 301 and keeps the query string.
 - Always Use HTTPS: on.
-- Moved from GitHub Pages on 26 Nov 2026, after the domain's DNS moved from Fasthosts to Cloudflare the same day (records in `D:\storage\Claude\Move Domains\yeovilhandyman.com\`). The old GitHub Pages DNS was:
+- Moved from GitHub Pages on 26 Nov 2026 (GitHub Pages is now disabled on the repo), after the domain's DNS moved from Fasthosts to Cloudflare the same day (records in `D:\storage\Claude\Move Domains\yeovilhandyman.com\`). The old GitHub Pages DNS was:
   - apex A records 185.199.108.153, .109, .110, .111
   - `www` CNAME `nomhawk.github.io`
   - To undo, put those back as DNS only, restore the `CNAME` file and the root layout, and turn GitHub Pages back on.
