@@ -1,21 +1,37 @@
 # Yeovil Handyman: project guide
 
-One-page website for Yeovil Handyman, a handyman business in Yeovil, Somerset. Live at **https://yeovilhandyman.com** (bare domain is the main address; www redirects to it).
+Website for Yeovil Handyman, Yeovil, Somerset. Live at **https://yeovilhandyman.com** (bare domain is the main address; www redirects to it).
 
-The site is plain static HTML and CSS, made before this repo was reorganised. There is no build step: edit the files in `site/` directly.
+## The business (from Rich, 28 Nov 2026)
+- **Focus: carpentry, building work and odd jobs.** Don't target painting and decorating, plumbing or electrics. The FAQ says Gary can turn his hand to most things if asked.
+- **Gary** is the main contractor and has been a builder for 25 years.
+- **Prices: £40 an hour or £300 a day.** Quotes are free. Materials policy not given: don't state one.
+- **Area:** within about 30 minutes of Yeovil (the town list is in `build.js`).
+- **No phone number** (cold calls). Contact is the web form plus web@yeovilhandyman.com.
+- **No real job photos and no reviews yet.** Never invent either. The job pictures are line drawings, not photos.
+- **Audience:** homeowners in their 30s, 40s and older. Keep it easy to read and navigate: big text, plain words, say what we do, no fluff.
+- Rich to check: the "Typical jobs" lists in `build.js` are typical jobs for an experienced builder. Remove any Gary doesn't do.
 
-## Folder layout
-- `site/`: everything the browser gets. `index.html`, `style.css`, `img/`, plus:
-  - `_headers`: Cloudflare security headers
-  - `404.html`: the not-found page (noindex). Without it, Cloudflare Pages would serve the home page for every unknown URL.
-  - `sitemap.xml` and `robots.txt`: written by `python -I "D:\storage\Claude\Move Domains\tools\make_sitemap.py" site https://yeovilhandyman.com`. Re-run it after adding a page.
-- `.claude/launch.json`: "site" preview. Or run `python -m http.server 8080 --directory site`.
+## Folder layout and build
+- `build.js` writes every HTML page, plus `sitemap.xml`, into `site/` (Node 18+, no packages). **All wording lives in `build.js`**: edit it, never the built HTML.
+  - It also writes each page's head tags (canonical, icons, link-preview `og:` tags) and schema: WebSite and HomeAndConstructionBusiness (prices, areas) on the home page, Service and BreadcrumbList on the service pages.
+- `scripts/check.js` checks the built pages. It must show **0 errors** before any commit. It checks:
+  - one H1, title and description present, a canonical
+  - valid schema
+  - no broken internal links or `#` links
+  - sitemap pages exist
+  - no visible TODOs
+  - no phone number or WhatsApp link
+- Workflow: edit `build.js`, run `node build.js`, run `node scripts/check.js`, commit, push.
+- `site/` holds the static files that the build doesn't write: `style.css`, `app.js`, `fonts/`, the icons and `og-image.png`, `_headers`, `robots.txt`, `site.webmanifest`.
+- `404.html` is the not-found page (noindex). Without it, Cloudflare Pages would serve the home page for every unknown URL.
+- Preview: `.claude/launch.json` "site", or `python -m http.server 8080 --directory site`.
 
 ## Working style
 - Plain English, short sentences, UK spelling.
 - Don't change the business's wording, prices or contact details without asking Rich.
 - Never put Rich's personal email address on the site.
-- Keep it simple: static HTML, no frameworks.
+- Keep it simple: static HTML from `build.js`, no frameworks.
 
 ## Hosting
 - Code: GitHub **NoMhawk/yeovilhandyman** (public). Branch `main`.
@@ -42,21 +58,28 @@ Email is still **Fasthosts mail** (livemail). The setup:
 All of these are DNS only in Cloudflare. Don't change them. Don't turn on Cloudflare Email Routing: it would replace the MX records and cut off the Fasthosts mailboxes.
 
 ## Site notes
-- Pages: `/` (one-page site), `/privacy/` (privacy notice), `/thank-you/` (after the form, noindex), `404.html`.
-- `site/app.js` runs the mobile menu (open, close on link tap or Escape) and darkens the header after scrolling. On pages without the dark hero picture, the header is always solid.
+- Pages (rebuilt 28 Nov 2026):
+  - `/` home
+  - `/carpentry/`, `/building-work/` and `/odd-jobs/`: service pages
+  - `/areas/`
+  - `/privacy/`
+  - `/thank-you/` (noindex)
+  - `404.html`
+  - Every page ends with the contact form (`#contact`) except privacy, thank-you and 404.
+- `site/app.js` runs the mobile menu: opens and closes, closes on a link tap or Escape.
 - **Contact form:** posts straight to Web3Forms (no script).
-  - Account `yeovilhandyman@richietaylor.net` (Free plan, 250 a month). Form "Yeovil Handyman contact form", access key in `index.html` (public, not a secret).
+  - Account `yeovilhandyman@richietaylor.net` (Free plan, 250 a month). Form "Yeovil Handyman contact form", access key in `build.js` (public, not a secret).
   - Each enquiry is emailed to the account address, then on to Rich's Gmail. After sending, visitors go to `/thank-you/`.
   - A hidden `botcheck` box catches spam bots.
   - The privacy notice names Web3Forms. Change it if the form processor changes.
 - **No third-party loads.**
   - Montserrat is self-hosted in `site/fonts/` (one variable woff2, SIL Open Font Licence).
-  - Service icons are inline SVGs.
+  - Icons and job drawings are inline SVG line art in `build.js`.
   - The only outside requests are Cloudflare's analytics beacon and the form post.
-- `favicon.svg`: "YH" in crimson on dark grey (the source for all the icons). Every page has a canonical link.
-- The project pictures in `site/img/` are AI-generated (they carry a "Grok" watermark), not photos of real jobs. `lighting.jpg` is a crop of `kitchen.jpg`. The hero background is `painting.jpg` under a dark overlay. Rich to update: swap in real job photos when available.
-- No home address, phone number or WhatsApp on the site, at Rich's request (26 Nov 2026). Contact is the form plus web@yeovilhandyman.com.
+- The AI-generated "project photos" were removed on 28 Nov 2026, because they carried a "Grok" watermark and claimed jobs that weren't done. Add real job photos when Rich has them.
+- No home address, phone number or WhatsApp on the site, at Rich's request (26 Nov 2026).
 - Search results and link previews (26 Nov 2026, Rich chose a branded card):
   - `favicon.ico`, `apple-touch-icon.png`, `icon-192/512.png`, `logo-512.png` and `og-image.png` (dark card: YH, "Yeovil Handyman", "Home repairs and maintenance in Yeovil") are made from `favicon.svg` by `python "D:\storage\Claude\Move Domains\tools\make_icons.py" --svg site/favicon.svg --out site --bg "#1f262e" --accent "#ff4d6a" --card-title "Yeovil Handyman" --card-sub "Home repairs and maintenance in Yeovil"`.
-  - The tags in each page's `<!-- search-appearance -->` block (icons, manifest, og:/twitter:, and WebSite + business schema on the home page) are written by `search_tags.py` in the same folder. Rerun it after adding a page or changing a title or description (in Git Bash, prefix `MSYS_NO_PATHCONV=1`).
+  - The tags in each page's `<!-- search-appearance -->` block are now written by `build.js` (since 28 Nov 2026). Don't run `search_tags.py` here: the next build would overwrite its output.
+  - The link-preview card subtitle still says "Home repairs and maintenance in Yeovil". To change it, rerun `make_icons.py` with a new `--card-sub`.
   - Check it live: `node "D:\storage\Claude\Check Sites\scripts\search-appearance.mjs" yeovilhandyman.com`.
