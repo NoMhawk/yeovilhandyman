@@ -16,6 +16,12 @@ const SITE = {
   daily: '£300',
 };
 const OUT = path.join(__dirname, 'site');
+// Version stamps so browsers fetch a fresh copy whenever style.css or app.js changes
+// (Cloudflare lets browsers keep them for 4 hours otherwise).
+const crypto = require('crypto');
+const ver = (f) => crypto.createHash('md5').update(fs.readFileSync(path.join(OUT, f))).digest('hex').slice(0, 10);
+const CSS = `/style.css?v=${ver('style.css')}`;
+const JS = `/app.js?v=${ver('app.js')}`;
 
 // Towns within about 30 minutes' drive of Yeovil.
 const TOWNS = {
@@ -34,7 +40,7 @@ const D = '#29323c', R = '#dc143c';
 const g = (inner, stroke = D) =>
   `<g fill="none" stroke="${stroke}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">${inner}</g>`;
 const art = (inner, label) =>
-  `<svg viewBox="0 0 160 110" role="img" aria-label="${esc(label)}">${inner}</svg>`;
+  `<svg viewBox="0 0 160 110" width="160" height="110" role="img" aria-label="${esc(label)}">${inner}</svg>`;
 
 const ART = {
   door: art(g('<path d="M8 104h144"/><rect x="52" y="10" width="56" height="94"/><rect x="58" y="16" width="44" height="88"/><rect x="64" y="24" width="32" height="30" rx="2"/><rect x="64" y="62" width="32" height="34" rx="2"/>') +
@@ -55,19 +61,19 @@ const ART = {
     `<rect x="114" y="14" width="32" height="86" fill="${R}" fill-opacity="0.12" stroke="${R}" stroke-width="3"/>`, 'Drawing of a timber stud wall with plasterboard'),
   repairs: art(g('<path d="M6 104h148"/><rect x="20" y="26" width="64" height="64" rx="4"/><path d="M28 34h48v48H28z"/><path d="M52 34v48M28 58h48"/>') +
     g('<path d="M104 92l34-34M132 52l14 14-8 8-14-14z"/><path d="M98 32h44"/><path d="M106 32v-8h28v8"/>', R), 'Drawing of a window being repaired with tools'),
-  hero: `<svg viewBox="0 0 320 260" role="img" aria-label="Drawing of a timber house frame with a ladder and hammer">` +
+  hero: `<svg viewBox="0 0 320 260" width="320" height="260" role="img" aria-label="Drawing of a timber house frame with a ladder and hammer">` +
     g('<path d="M20 240h280"/><path d="M50 120l110-80 110 80"/><path d="M70 106v134M250 106v134"/><path d="M70 160h180M70 200h180"/><path d="M115 120v120M160 74v166M205 120v120"/><path d="M70 106l45 54M250 106l-45 54"/>', '#ffffff') +
     g('<path d="M262 240l-30-160M292 240l-30-160M236 100h30M241 130h30M246 160h30M251 190h30M256 220h30"/>', '#ff4d6a') +
     g('<path d="M36 214l40-40M66 164l20 20-10 10-20-20z"/>', '#ff4d6a') + '</svg>',
-  toolbox: `<svg viewBox="0 0 200 160" role="img" aria-label="Drawing of a toolbox">` +
+  toolbox: `<svg viewBox="0 0 200 160" width="200" height="160" role="img" aria-label="Drawing of a toolbox">` +
     g('<path d="M10 150h180"/><rect x="24" y="62" width="152" height="84" rx="6"/><path d="M24 92h152"/><path d="M74 62V42h52v20"/><rect x="88" y="84" width="24" height="16" rx="3"/>') +
     g('<path d="M44 52l24-30M60 20l14 8-6 10-14-8z"/><path d="M140 52V18M134 18h12"/>', R) + '</svg>',
 };
 
 const ICON = {
-  carpentry: `<svg class="icon" viewBox="0 0 48 48" aria-hidden="true">` + g('<path d="M6 34l22-22 8 8-22 22H6z"/><path d="M28 12l5-5 8 8-5 5"/><path d="M12 34l2 2M16 30l2 2M20 26l2 2"/>', R) + '</svg>',
-  building: `<svg class="icon" viewBox="0 0 48 48" aria-hidden="true">` + g('<path d="M4 44h40"/><path d="M6 22h28v22H6zM6 33h28M20 22v11M13 33v11M27 33v11"/><path d="M30 14l12-8 3 4-12 8z"/>', R) + '</svg>',
-  oddjobs: `<svg class="icon" viewBox="0 0 48 48" aria-hidden="true">` + g('<rect x="4" y="18" width="40" height="24" rx="3"/><path d="M4 28h40M17 18v-6h14v6"/><rect x="20" y="25" width="8" height="6" rx="1"/>', R) + '</svg>',
+  carpentry: `<svg class="icon" viewBox="0 0 48 48" width="56" height="56" aria-hidden="true">` + g('<path d="M6 34l22-22 8 8-22 22H6z"/><path d="M28 12l5-5 8 8-5 5"/><path d="M12 34l2 2M16 30l2 2M20 26l2 2"/>', R) + '</svg>',
+  building: `<svg class="icon" viewBox="0 0 48 48" width="56" height="56" aria-hidden="true">` + g('<path d="M4 44h40"/><path d="M6 22h28v22H6zM6 33h28M20 22v11M13 33v11M27 33v11"/><path d="M30 14l12-8 3 4-12 8z"/>', R) + '</svg>',
+  oddjobs: `<svg class="icon" viewBox="0 0 48 48" width="56" height="56" aria-hidden="true">` + g('<rect x="4" y="18" width="40" height="24" rx="3"/><path d="M4 28h40M17 18v-6h14v6"/><rect x="20" y="25" width="8" height="6" rx="1"/>', R) + '</svg>',
 };
 
 // ---------- Shared pieces ----------
@@ -128,7 +134,7 @@ function footer() {
       <p class="legal">© Yeovil Handyman. Website by RT Web Design.</p>
     </div>
   </footer>
-  <script src="/app.js" defer></script>`;
+  <script src="${JS}" defer></script>`;
 }
 
 function contactSection(heading = 'Get a free quote') {
@@ -196,7 +202,7 @@ function head({ title, description, urlPath, noindex = false, schema = [] }) {
   <meta name="description" content="${esc(description)}">${noindex ? '\n  <meta name="robots" content="noindex">' : ''}
   <link rel="canonical" href="${url}">
   <link rel="preload" href="/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="${CSS}">
   <!-- search-appearance -->
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">

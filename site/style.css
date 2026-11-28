@@ -284,3 +284,4 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
 }
 .about .ticks { margin-top: 18px; }
 @media (max-width: 899px) { .about-art { display: none; } }
+.hero-art svg, .about-art svg { width: 100%; height: auto; }

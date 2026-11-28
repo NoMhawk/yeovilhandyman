@@ -23,6 +23,7 @@ Website for Yeovil Handyman, Yeovil, Somerset. Live at **https://yeovilhandyman.
   - no visible TODOs
   - no phone number or WhatsApp link
 - Workflow: edit `build.js`, run `node build.js`, run `node scripts/check.js`, commit, push.
+- `build.js` adds a version stamp to `style.css` and `app.js` links (`?v=<hash>`). Cloudflare lets browsers keep them for 4 hours, so without the stamp a change to the CSS shows new pages with the old stylesheet (this happened on 28 Nov 2026). Always rebuild after editing `style.css` or `app.js`.
 - `site/` holds the static files that the build doesn't write: `style.css`, `app.js`, `fonts/`, the icons and `og-image.png`, `_headers`, `robots.txt`, `site.webmanifest`.
 - `404.html` is the not-found page (noindex). Without it, Cloudflare Pages would serve the home page for every unknown URL.
 - Preview: `.claude/launch.json` "site", or `python -m http.server 8080 --directory site`.
